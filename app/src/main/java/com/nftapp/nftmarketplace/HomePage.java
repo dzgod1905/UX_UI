@@ -45,22 +45,16 @@ public class HomePage extends AppCompatActivity {
                     return true;
                 } else if (itemId == R.id.action_search) {
 
-                    Intent intent = new Intent(getApplicationContext(), SearchNFT.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("object_user", user);
-                    intent.putExtras(bundle);
-                    startActivity(intent);
 
 //                    startActivity(new Intent(getApplicationContext(), SearchNFT.class));
                     overridePendingTransition(0, 0);
                     return true;
                 } else if (itemId == R.id.action_profile) {
 
-                    Intent intent = new Intent(getApplicationContext(), UserProfile.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("object_user", user);
-                    intent.putExtras(bundle);
-                    startActivity(intent);
 
 //                    startActivity(new Intent(getApplicationContext(), UserProfile.class));
                     overridePendingTransition(0, 0);

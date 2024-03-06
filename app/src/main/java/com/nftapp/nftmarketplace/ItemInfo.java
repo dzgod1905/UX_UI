@@ -88,11 +88,9 @@ public class ItemInfo extends AppCompatActivity {
                     overridePendingTransition(0, 0);
                     return true;
                 } else if (itemId == R.id.action_search) {
-                    startActivity(new Intent(getApplicationContext(), SearchNFT.class));
                     overridePendingTransition(0, 0);
                     return true;
                 } else if (itemId == R.id.action_profile) {
-                    startActivity(new Intent(getApplicationContext(), UserProfile.class));
                     overridePendingTransition(0, 0);
                     return true;
                 }
@@ -231,7 +229,6 @@ public class ItemInfo extends AppCompatActivity {
         item_username.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ItemInfo.this,AccountProfile.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("object_item",item);
                 intent.putExtras(bundle);
@@ -242,8 +239,6 @@ public class ItemInfo extends AppCompatActivity {
 
     private List<User> getListUser() {
         List<User> list = new ArrayList<>();
-        list.add(new User(1, R.drawable.avt1, R.drawable.background, "TuanAnh", "123456789", "123456", 100F, "1@gmail.com", "0385961788", "1", "no"));
-        list.add(new User(1, R.drawable.avt1, R.drawable.background, "MinhTuong", "123456789", "123456", 100F, "1@gmail.com", "0385961788", "1", "no"));
         return list;
     }
 }
