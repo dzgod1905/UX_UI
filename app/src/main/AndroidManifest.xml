@@ -22,10 +22,8 @@
         android:theme="@style/Theme.NFTMarketPlace"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".SplashScreen"
-            android:exported="true"
-            android:theme="@style/Theme.App.Starting">
+        <activity android:name=".MainActivity_Quiz"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,6 +50,9 @@
             android:exported="true"></activity>
         <activity
             android:name=".ImgView"
+            android:exported="false" />
+        <activity
+            android:name=".BossAct"
             android:exported="false" />
     </application>
 

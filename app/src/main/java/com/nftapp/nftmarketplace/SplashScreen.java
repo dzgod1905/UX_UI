@@ -9,7 +9,7 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = new Intent(SplashScreen.this,CategoryPage.class);
+        Intent intent = new Intent(SplashScreen.this,MainActivity_Quiz.class);
         startActivity(intent);
         finish();
     }

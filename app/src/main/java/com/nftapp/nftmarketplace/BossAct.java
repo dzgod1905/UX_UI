@@ -1,6 +1,5 @@
 package com.nftapp.nftmarketplace;
 
-import android.graphics.Typeface;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.Animation;
@@ -21,8 +20,6 @@ public class BossAct extends AppCompatActivity {
 
         smalltobig = AnimationUtils.loadAnimation(this, R.anim.smalltobig);
 
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/FredokaOneRegular.ttf");
-
         textQuestion = (TextView) findViewById(R.id.textQuestion);
         textScreen = (TextView) findViewById(R.id.textScreen);
         textTitle = (TextView) findViewById(R.id.textTitle);
@@ -30,12 +27,6 @@ public class BossAct extends AppCompatActivity {
 
         bigboss = (ImageView) findViewById(R.id.bigboss);
         bigboss.startAnimation(smalltobig);
-
-
-        textQuestion.setTypeface(typeface);
-        textScreen.setTypeface(typeface);
-        textTitle.setTypeface(typeface);
-        textBtn.setTypeface(typeface);
 
     }
 }

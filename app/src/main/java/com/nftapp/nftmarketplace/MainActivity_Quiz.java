@@ -73,17 +73,11 @@ public class MainActivity_Quiz extends AppCompatActivity {
         textView.setFocusable(true);
         textView.setTextSize(32);
 
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/FredokaOneRegular.ttf");
 
         textQuestion = (TextView) findViewById(R.id.textQuestion);
         textScreen = (TextView) findViewById(R.id.textScreen);
         textTitle = (TextView) findViewById(R.id.textTitle);
 
-        textQuestion.setTypeface(typeface);
-        textScreen.setTypeface(typeface);
-        textTitle.setTypeface(typeface);
-        editText.setTypeface(typeface);
-        textView.setTypeface(typeface);
 
         textView.setOnClickListener(new View.OnClickListener() {
 
@@ -115,12 +109,12 @@ public class MainActivity_Quiz extends AppCompatActivity {
     private void doValidate() {
         presCounter = 0;
 
+
         EditText editText = findViewById(R.id.editText);
         LinearLayout linearLayout = findViewById(R.id.layoutParent);
 
         if(editText.getText().toString().equals(textAnswer)) {
-//            Toast.makeText(MainActivity.this, "Correct", Toast.LENGTH_SHORT).show();
-
+           Toast.makeText(MainActivity_Quiz.this, "Correct", Toast.LENGTH_SHORT).show();
             Intent a = new Intent(MainActivity_Quiz.this, BossAct.class);
             startActivity(a);
 
