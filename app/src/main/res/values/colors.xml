@@ -10,5 +10,7 @@
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
     <color name="colorPurple">#332FA2</color>
+    <color name="orange">#FFA500</color>
+    <color name="pink">#FFC0CB</color>
 
 </resources>
