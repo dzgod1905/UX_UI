@@ -21,8 +21,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VNTravel"
         android:usesCleartextTraffic="true"
-
         tools:targetApi="31">
+        <activity
+            android:name=".DoneAllQuiz"
+            android:exported="false"
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".SplashScreen"
             android:exported="true"
@@ -36,30 +39,32 @@
         <activity
             android:name=".Travel"
             android:exported="true"
-            android:windowSoftInputMode="adjustNothing"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".MainPage"
             android:exported="true"
-            android:windowSoftInputMode="adjustNothing"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".CategoryPage"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ItemInfo"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ImgView"
             android:exported="false" />
         <activity
             android:name=".MainActivity_Quiz"
             android:exported="true"
-            android:windowSoftInputMode="adjustNothing"></activity>
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".BossAct"
             android:exported="true"
-            android:windowSoftInputMode="adjustNothing"></activity>
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustNothing" />
     </application>
 
 </manifest>
