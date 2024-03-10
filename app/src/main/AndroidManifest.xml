@@ -27,7 +27,8 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity_Quiz"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".SplashScreen"
             android:exported="true"
