@@ -103,7 +103,7 @@ public class MainActivity_Quiz extends AppCompatActivity {
         textView.setText(text);
         textView.setClickable(true);
         textView.setFocusable(true);
-        textView.setTextSize(32);
+        textView.setTextSize(16);
 
 
         textQuestion = (TextView) findViewById(R.id.textQuestion);
