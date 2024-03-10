@@ -21,7 +21,7 @@ public class MainActivity_Quiz extends AppCompatActivity {
     private int presCounter = 0;
     private int[] generalPressCounter = {4,3,4};
     private String[] genralTextAnswer = {"BIRD","CAT","LION"};
-    private String[][] generalKey = {{"R", "I", "B", "D"},{"C", "A", "T", "D"},{"L", "I", "O", "N"}};
+    private String[][] generalKey = {{"R", "I", "B", "D","X"},{"C", "A", "T", "D","X"},{"L", "I", "O", "N","X"}};
 
 
 
@@ -103,7 +103,7 @@ public class MainActivity_Quiz extends AppCompatActivity {
         textView.setText(text);
         textView.setClickable(true);
         textView.setFocusable(true);
-        textView.setTextSize(32);
+        textView.setTextSize(16);
 
 
         textQuestion = (TextView) findViewById(R.id.textQuestion);
