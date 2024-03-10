@@ -1,35 +1,49 @@
 package com.nftapp.nftmarketplace;
 import androidx.appcompat.app.AppCompatActivity;
 
-        import android.annotation.SuppressLint;
-        import android.content.Intent;
-        import android.graphics.Typeface;
-        import android.os.Bundle;
-        import android.view.Gravity;
-        import android.view.View;
-        import android.view.animation.Animation;
-        import android.view.animation.AnimationUtils;
-        import android.widget.EditText;
-        import android.widget.LinearLayout;
-        import android.widget.TextView;
-        import android.widget.Toast;
-
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.view.Gravity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 import java.util.Random;
+
 
 public class MainActivity_Quiz extends AppCompatActivity {
 
     private int presCounter = 0;
-    private int maxPresCounter = 4;
-    private String[] keys = {"R", "I", "B", "D", "X"};
-    private String textAnswer = "BIRD";
+    private int[] generalPressCounter = {4,3,4};
+    private String[] genralTextAnswer = {"BIRD","CAT","LION"};
+    private String[][] generalKey = {{"R", "I", "B", "D", "X"},{"C", "A", "T", "D", "X"},{"L", "I", "O", "N", "X"}};
+
+
+
     TextView textScreen, textQuestion, textTitle;
     Animation smallbigforth;
+
+    public int value =  0;
+    public String[] keys = generalKey[value];
+    public String textAnswer = genralTextAnswer[value];
+    public int maxPresCounter = generalPressCounter[value];
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Intent intent = getIntent();
+        value = intent.getIntExtra("i",0);
+        keys = generalKey[value];
+        textAnswer = genralTextAnswer[value];
+        maxPresCounter = generalPressCounter[value];
         smallbigforth = AnimationUtils.loadAnimation(this, R.anim.smallbigforth);
 
         keys = shuffleArray(keys);
@@ -37,8 +51,26 @@ public class MainActivity_Quiz extends AppCompatActivity {
         for (String key : keys) {
             addView(((LinearLayout) findViewById(R.id.layoutParent)), key, ((EditText) findViewById(R.id.editText)));
         }
+        CountDownTimer cdt = new CountDownTimer(15 * 1000 + 500, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                updateTimer((int)millisUntilFinished/1000);
+            }
 
-        maxPresCounter = 4;
+            @Override
+            public void onFinish() {
+                TextView textViewCountDown = findViewById(R.id.time);
+                textViewCountDown.setText("Time Out");
+                EditText editText = findViewById(R.id.editText);
+                editText.setText(textAnswer);
+            }
+        }.start();
+
+    }
+
+    private void updateTimer(int i) {
+        TextView textViewCountDown = findViewById(R.id.time);
+        textViewCountDown.setText(String.valueOf(i));
     }
 
 
@@ -116,7 +148,13 @@ public class MainActivity_Quiz extends AppCompatActivity {
         if(editText.getText().toString().equals(textAnswer)) {
            Toast.makeText(MainActivity_Quiz.this, "Correct", Toast.LENGTH_SHORT).show();
             Intent a = new Intent(MainActivity_Quiz.this, BossAct.class);
-            startActivity(a);
+            a.putExtra("l", value+1);
+            if (value == 2) {
+                Intent end = new Intent(MainActivity_Quiz.this, DoneAllQuiz.class);
+                startActivity(end);
+            } else {
+                startActivity(a);
+            }
 
             editText.setText("");
         } else {

@@ -22,8 +22,16 @@
         android:theme="@style/Theme.NFTMarketPlace"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity android:name=".MainActivity_Quiz"
-            android:exported="true">
+        <activity
+            android:name=".DoneAllQuiz"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity_Quiz"
+            android:exported="false" />
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true"
+            android:theme="@style/Theme.App.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,13 +49,13 @@
         <activity
             android:name=".HomePage"
             android:exported="true"
-            android:windowSoftInputMode="adjustNothing"></activity>
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".CategoryPage"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ItemInfo"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ImgView"
             android:exported="false" />

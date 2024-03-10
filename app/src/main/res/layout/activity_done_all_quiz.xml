@@ -17,7 +17,7 @@
         android:textSize="22sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Checkpoint Time" />
+        android:text="Congratulation!" />
 
 
     <ImageView
@@ -38,29 +38,10 @@
         android:textSize="28sp"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:text="Well Done! Ready for Boss?" />
+        android:text="Well Done! You have done all quizzes!" />
 
-    <Button
-        android:id="@+id/textTitle"
-        android:layout_width="395dp"
-        android:layout_height="97dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="60dp"
-        android:backgroundTint="@color/pink"
-        android:paddingBottom="10dp"
-        android:text="Continue"
-        android:textAllCaps="false"
-        android:textColor="@color/colorPurple"
-        android:textSize="28sp" />
 
-    <TextView
-        android:id="@+id/textBtn"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
-        android:textColor="#AD87FF"
-        android:textSize="22sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back to Home" />
+
+
 
 </LinearLayout>
