@@ -16,23 +16,12 @@
             android:orientation="vertical"
             android:contentDescription="Scroll_to_View"
             android:overScrollMode="never"
-            android:scrollbars="vertical"
-            >
+            android:scrollbars="vertical">
 
             <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/action_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:text="Details"
-                    android:textStyle="bold"
-                    android:textSize="30dp"
-                    android:gravity="center"
-                    android:background="#f2ecf6"/>
                 <ImageView
                     android:id="@+id/back_button"
                     android:layout_width="wrap_content"
@@ -40,12 +29,6 @@
                     android:src="@drawable/baseline_arrow_back_ios_new_24"
                     android:layout_marginStart="10dp"
                     android:layout_centerVertical="true"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:elevation="10dp"
-                    android:background="@color/gray">
-                </View>
             </RelativeLayout>
 
             <androidx.cardview.widget.CardView
@@ -72,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:paddingStart="10dp"
-                    android:text="Con cáo"
+                    android:text="Thành nhà Hồ"
                     android:textSize="25dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -85,321 +68,17 @@
                     android:layout_height="match_parent"
                     app:layout_constraintTop_toBottomOf="@+id/item_name">
                     <TextView
-                        android:id="@+id/by"
+                        android:id="@+id/item_content"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="10dp"
-                        android:text="by"
+                        android:text="Thành nhà Hồ (hay còn gọi là thành Tây Đô, thành An Tôn, thành Tây Kinh hay thành Tây Giai) là kinh đô nước Đại Ngu (quốc hiệu của Việt Nam dưới thời nhà Hồ), nằm trên địa phận tỉnh Thanh Hóa. Đây là tòa thành kiên cố với kiến trúc độc đáo bằng đá có quy mô lớn hiếm hoi ở Việt Nam, có giá trị và độc đáo nhất, duy nhất còn lại ở tại Đông Nam Á và là một trong rất ít những thành lũy bằng đá còn lại trên thế giới[1]. Thành được xây dựng trong thời gian ngắn, chỉ khoảng 3 tháng (từ tháng Giêng đến tháng 3 năm 1397) và cho đến nay, dù đã tồn tại hơn 6 thế kỷ nhưng một số đoạn của tòa thành này còn lại tương đối nguyên vẹn.
+
+Ngày 27 tháng 6 năm 2011, sau 6 năm đệ trình hồ sơ, Thành nhà Hồ đã được UNESCO công nhận là di sản văn hóa thế giới, thành cũng được CNN đánh giá là một trong 21 di sản nổi bật và vĩ đại nhất thế giới[2]. Hiện nay, nơi đây đã được thủ tướng chính phủ Việt Nam đưa vào danh sách xếp hạng 62 di tích quốc gia đặc biệt. Từ tháng 12 năm 2018 đến tháng 6 năm 2020, Quỹ Bảo tồn Văn hóa của Đại sứ Hoa Kỳ (AFCP) đã tài trợ 92,500 USD vào dự án bảo tồn Cổng Nam, Thành nhà Hồ.[3]"
                         android:textSize="16dp"/>
-                    <TextView
-                        android:id="@+id/item_username"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="2dp"
-                        android:textSize="20dp"
-                        android:text="AnhTuan"
-                        android:textStyle="bold"/>
+
                 </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/group_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_constraintTop_toBottomOf="@+id/item_name"
-                    android:layout_marginTop="40dp"
-                    android:visibility="visible">
-                    <TextView
-                        android:layout_width="170dp"
-                        android:layout_height="wrap_content"
-                        android:text="Current Price: "
-                        android:textSize="20dp"
-                        android:paddingStart="10dp"
-                        android:textColor="@color/gray"/>
-
-                    <TextView
-                        android:id="@+id/item_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1"
-                        android:textSize="20dp"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="ETH"
-                        android:textSize="20dp"
-                        android:paddingStart="5dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/group_status"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_constraintTop_toBottomOf="@+id/item_name"
-                    android:layout_marginTop="72dp"
-                    android:visibility="visible">
-                    <TextView
-                        android:layout_width="170dp"
-                        android:layout_height="wrap_content"
-                        android:text="Status: "
-                        android:textSize="20dp"
-                        android:paddingStart="10dp"
-                        android:textColor="@color/gray"/>
-
-                    <TextView
-                        android:id="@+id/item_status"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Sell On Market"
-                        android:textColor="@color/blue"
-                        android:textSize="20dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/group_date_end"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_constraintTop_toBottomOf="@+id/item_name"
-                    android:layout_marginTop="104dp"
-                    android:visibility="visible">
-                    <TextView
-                        android:layout_width="170dp"
-                        android:layout_height="wrap_content"
-                        android:text="Date End: "
-                        android:textSize="20dp"
-                        android:paddingStart="10dp"
-                        android:textColor="@color/gray"/>
-
-                    <TextView
-                        android:id="@+id/item_date_end"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="01/09/2003"
-                        android:textColor="@color/black_overlay"
-                        android:textSize="20dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txt2"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="10K"-->
-<!--                    android:textSize="16dp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintEnd_toEndOf="@+id/favorite_icon"-->
-<!--                    app:layout_constraintHorizontal_bias="0.5"-->
-<!--                    app:layout_constraintStart_toStartOf="@+id/favorite_icon"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/favorite_icon" />-->
-
-
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="4dp"-->
-<!--                    android:text="Favorites"-->
-<!--                    android:textColor="@color/gray"-->
-<!--                    android:textSize="16dp"-->
-<!--                    app:layout_constraintEnd_toEndOf="@+id/favorite_icon"-->
-<!--                    app:layout_constraintHorizontal_bias="0.5"-->
-<!--                    app:layout_constraintStart_toStartOf="@+id/favorite_icon"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/txt2" />-->
-
-<!--                <ImageView-->
-<!--                    android:id="@+id/favorite_icon"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginBottom="4dp"-->
-<!--                    android:src="@drawable/baseline_favorite_border_24"-->
-<!--                    app:layout_constraintBottom_toBottomOf="@+id/item_name"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintHorizontal_bias="0.902"-->
-<!--                    app:layout_constraintStart_toStartOf="parent" />-->
-
-
-
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <Button
-                    android:id="@+id/buy_button"
-                    android:layout_width="300dp"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Buy Now"
-                    android:textSize="25dp"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:visibility="gone"/>
-                <Button
-                    android:id="@+id/order_button"
-                    android:layout_width="300dp"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Order"
-                    android:textSize="25dp"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:visibility="gone"/>
-                <Button
-                    android:id="@+id/sell_button"
-                    android:layout_width="300dp"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Sell On Market"
-                    android:textColor="@color/white"
-                    android:textSize="25dp"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:visibility="gone"/>
-                <Button
-                    android:id="@+id/auction_button"
-                    android:layout_width="300dp"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Auction"
-                    android:textColor="@color/white"
-                    android:textSize="25dp"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:visibility="gone"/>
             </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/set_sell"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="40dp"
-                android:orientation="vertical"
-                android:visibility="gone">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
-                    <TextView
-                        android:layout_width="170dp"
-                        android:layout_height="wrap_content"
-                        android:text="Set Price: "
-                        android:textSize="20dp"
-                        android:paddingStart="10dp"
-                        android:textStyle="bold"/>
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_price_item"
-                        android:layout_width="170dp"
-                        android:layout_height="wrap_content"
-                        android:hint="Price"
-                        />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="ETH"
-                        android:textSize="20dp"
-                        android:paddingStart="10dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
-                    <TextView
-                        android:layout_width="170dp"
-                        android:layout_height="wrap_content"
-                        android:text="Date End: "
-                        android:textSize="20dp"
-                        android:paddingStart="10dp"
-                        android:textStyle="bold"/>
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_date_end"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="DD/MM/YY"
-                        />
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/sell_auth_button"
-                    android:layout_width="300dp"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Sell"
-                    android:textColor="@color/white"
-                    android:textSize="25dp"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:visibility="visible"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/set_order"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="40dp"
-                android:orientation="vertical"
-                android:visibility="gone">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
-                    <TextView
-                        android:layout_width="170dp"
-                        android:layout_height="wrap_content"
-                        android:text="Order Price: "
-                        android:textSize="20dp"
-                        android:paddingStart="10dp"
-                        android:textStyle="bold"/>
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_order_price_item"
-                        android:layout_width="170dp"
-                        android:layout_height="wrap_content"
-                        android:hint="Price"
-                        />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="ETH"
-                        android:textSize="20dp"
-                        android:paddingStart="10dp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/order_auth_button"
-                    android:layout_width="300dp"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Order"
-                    android:textColor="@color/white"
-                    android:textSize="25dp"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:visibility="visible"/>
-            </LinearLayout>
-
-        </LinearLayout>
     </ScrollView>
-
-
-
-
-
-
-
-    <include layout="@layout/bottom_navigation">
-    </include>
-
 </LinearLayout>

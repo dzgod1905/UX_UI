@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -35,7 +36,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_nft,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_heritage,parent,false);
         return new ItemViewHolder(view);
     }
 
@@ -45,12 +46,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         if (item == null) {
             return;
         }
+        holder.itemName.setText(item.getItem_name());
         holder.itemImg.setImageResource(item.getResourceImage());
         holder.itemName.setText(item.getItem_name());
-        holder.itemPrice.setText(String.valueOf(item.getItem_price()));
-        holder.itemUserName.setText(item.getItem_username());
-        holder.itemStatus.setText(item.getItem_status());
-//        holder.itemDateEnd.setText(item.getItem_date_end());
 
         holder.layout_item.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,20 +84,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         private CardView layout_item;
         private ImageView itemImg;
         private TextView itemName;
-        private TextView itemPrice;
-        private TextView itemUserName;
-
-        private TextView itemStatus;
-        private TextView itemDateEnd;
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
             layout_item = itemView.findViewById(R.id.layout_item);
             itemImg = itemView.findViewById(R.id.item_image);
             itemName = itemView.findViewById(R.id.item_name);
-            itemPrice = itemView.findViewById(R.id.item_price);
-            itemUserName = itemView.findViewById(R.id.item_username);
-            itemStatus = itemView.findViewById(R.id.item_status);
-            itemDateEnd = itemView.findViewById(R.id.item_date_end);
+
         }
     }
 }

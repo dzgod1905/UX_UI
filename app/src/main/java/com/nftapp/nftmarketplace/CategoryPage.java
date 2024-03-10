@@ -11,25 +11,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.nftapp.nftmarketplace.adapter.ItemAdapter;
 import com.nftapp.nftmarketplace.model.Category;
-import com.nftapp.nftmarketplace.model.Item;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class CategoryPage extends AppCompatActivity {
     private TextView category_name;
     private ImageView back_button;
-    private BottomNavigationView bottomNavigationView;
     private RecyclerView rcvItem;
     private ItemAdapter mItemAdapter;
-    private ImageView avt_button;
-    private ImageView background_button;
-    private Button create_NFT_button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,26 +29,6 @@ public class CategoryPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onBackPressed();
-            }
-        });
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.action_search);
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                int itemId = item.getItemId();
-                if (itemId == R.id.action_home) {
-                    startActivity(new Intent(getApplicationContext(), HomePage.class));
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (itemId == R.id.action_search) {
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (itemId == R.id.action_profile) {
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                return false;
             }
         });
         rcvItem = findViewById(R.id.rcv_items);

@@ -21,6 +21,5 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp"/>
-    <include layout="@layout/bottom_navigation"></include>
 
 </RelativeLayout>
