@@ -24,8 +24,7 @@
         tools:targetApi="31">
         <activity
             android:name=".DoneAllQuiz"
-            android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:exported="false"/>
         <activity
             android:name=".SplashScreen"
             android:exported="true"
@@ -39,12 +38,10 @@
         <activity
             android:name=".Travel"
             android:exported="true"
-            android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".MainPage"
             android:exported="true"
-            android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".CategoryPage"
@@ -58,12 +55,10 @@
         <activity
             android:name=".MainActivity_Quiz"
             android:exported="true"
-            android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".BossAct"
             android:exported="true"
-            android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustNothing" />
     </application>
 

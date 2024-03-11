@@ -1,6 +1,7 @@
 package com.nftapp.nftmarketplace;
 
 import android.annotation.SuppressLint;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,8 +24,16 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
         rcvFeature = findViewById(R.id.rcv_main);
         featureAdapter = new FeatureAdapter(this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
-        rcvFeature.setLayoutManager(linearLayoutManager);
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // Màn hình đang ở chế độ ngang
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+            rcvFeature.setLayoutManager(linearLayoutManager);
+        } else {
+            // Màn hình đang ở chế độ dọc
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+            rcvFeature.setLayoutManager(linearLayoutManager);
+        }
         featureAdapter.setData(getListFeature());
         rcvFeature.setAdapter(featureAdapter);
     }

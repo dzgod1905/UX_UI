@@ -36,7 +36,7 @@ public class Travel extends AppCompatActivity {
         List<Item> list1 = new ArrayList<>();
         List<Item> list2 = new ArrayList<>();
         List<Item> list3 = new ArrayList<>();
-        list1.add(new Item(1,R.drawable.avt1, "Avt1"));
+        list1.add(new Item(1,R.drawable.thanhnhaho, "Avt1"));
         list1.add(new Item(2,R.drawable.avt2, "Avt2"));
         list1.add(new Item(3,R.drawable.avt3, "Avt3"));
         list1.add(new Item(4,R.drawable.avt4, "Avt4"));
