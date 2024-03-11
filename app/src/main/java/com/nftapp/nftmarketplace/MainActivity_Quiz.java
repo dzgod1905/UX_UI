@@ -21,7 +21,7 @@ public class MainActivity_Quiz extends AppCompatActivity {
     private int presCounter = 0;
     private int[] generalPressCounter = {4,3,4};
     private String[] genralTextAnswer = {"BIRD","CAT","LION"};
-    private String[][] generalKey = {{"R", "I", "B", "D"},{"C", "A", "T", "D"},{"L", "I", "O", "N"}};
+    private String[][] generalKey = {{"R", "I", "B", "D","O"},{"C", "A", "T", "D","X"},{"L", "I", "O", "N", "U"}};
 
 
 
