@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/bgapp"
-    android:orientation="horizontal"
     tools:context=".MainActivity_Quiz">
-
 
     <TextView
         android:id="@+id/time"
@@ -20,54 +20,63 @@
         android:textColor="#FFF"
         android:textSize="22sp" />
 
+
     <LinearLayout
-        android:layout_width="290dp"
-        android:layout_height="120dp"
+        android:layout_marginTop="50dp"
         android:layout_gravity="center"
-        android:layout_marginLeft="-400dp"
-        android:layout_marginTop="-100dp"
         android:background="@drawable/bgquestion"
-        android:gravity="right"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="290dp"
+        android:layout_height="150dp">
 
         <TextView
-            android:id="@+id/textQuestion"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="6dp"
-            android:paddingRight="40dp"
-            android:text="Guess Animals in English language"
             android:textAlignment="center"
+            android:id="@+id/textQuestion"
             android:textColor="#332FA2"
-            android:textSize="26sp" />
+            android:textSize="26sp"
+            android:layout_width="220dp"
+            android:lineSpacingExtra="6dp"
+            android:layout_height="wrap_content"
+            android:text="Guess Animals in English language" />
 
     </LinearLayout>
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="-240dp"
-        android:background="@drawable/bgpurple"
+        android:layout_marginBottom="70dp"
+        android:padding="10dp"
         android:clickable="false"
         android:focusable="false"
-        android:gravity="center"
-        android:padding="10dp"
         android:textColor="#332FA2"
-        android:textSize="32sp" />
+        android:textSize="32sp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/bgpurple"
+        android:layout_width="200dp"
+        android:layout_height="80dp" />
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:text="Ammo"
+        android:textSize="24sp"
+        android:textColor="#FFF"
+        android:layout_marginRight="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        />
 
 
     <LinearLayout
         android:id="@+id/layoutParent"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="-300dp"
-        android:layout_marginTop="120dp"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
-
+        android:layout_height="wrap_content">
 
     </LinearLayout>
 
