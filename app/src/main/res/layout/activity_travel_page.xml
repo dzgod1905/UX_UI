@@ -13,9 +13,9 @@ tools:context=".Travel">
         android:layout_height="match_parent"
         android:contentDescription="Scroll_to_View"
         android:overScrollMode="never"
+        android:background="#6DD5FA"
         android:scrollbars="vertical"
-        tools:layout_editor_absoluteX="77dp"
-        tools:layout_editor_absoluteY="-198dp">
+        android:layout_marginTop="50dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,27 +25,34 @@ tools:context=".Travel">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_category"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"/>
+                android:layout_height="wrap_content"/>
         </RelativeLayout>
 
     </ScrollView>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:orientation="vertical"
-        android:background="#f2ecf6"
+        android:background="#6DD5FA"
         app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_arrow_back_ios_new_24"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"/>
 
-        <SearchView
-            android:id="@+id/search"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_below="@+id/action_name"
-            android:background="@drawable/search"
-            android:iconifiedByDefault="false"
-            android:queryHint="Tìm kiếm"></SearchView>
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            app:searchIcon="@drawable/baseline_search_24"
+            >
+        </androidx.appcompat.widget.SearchView>
+
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

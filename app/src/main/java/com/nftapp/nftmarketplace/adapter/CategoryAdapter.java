@@ -17,6 +17,7 @@ import com.nftapp.nftmarketplace.CategoryPage;
 import com.nftapp.nftmarketplace.ItemInfo;
 import com.nftapp.nftmarketplace.R;
 import com.nftapp.nftmarketplace.model.Category;
+import com.nftapp.nftmarketplace.model.Item;
 
 import java.io.Serializable;
 import java.util.List;
@@ -28,9 +29,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public CategoryAdapter(Context mContext) {
         this.mContext = mContext;
     }
+    public CategoryAdapter(List<Category> mListCategory) {
+        this.mListCategory = mListCategory;
+    }
 
     public void setData(List<Category> list) {
         this.mListCategory = list;
+        notifyDataSetChanged();
+    }
+    public void setFilterList(List<Category> filterList) {
+        this.mListCategory = filterList;
         notifyDataSetChanged();
     }
 

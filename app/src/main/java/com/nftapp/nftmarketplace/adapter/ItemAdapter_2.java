@@ -6,11 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -20,18 +17,17 @@ import com.nftapp.nftmarketplace.ItemInfo;
 import com.nftapp.nftmarketplace.R;
 import com.nftapp.nftmarketplace.model.Item;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
+public class ItemAdapter_2 extends RecyclerView.Adapter<ItemAdapter_2.ItemViewHolder>{
     private Context mContext;
     private List<Item> mListItem;
 
-    public ItemAdapter(List<Item> mListItem) {
+    public ItemAdapter_2(List<Item> mListItem) {
         this.mListItem = mListItem;
     }
 
-    public ItemAdapter(Context mContext) {
+    public ItemAdapter_2(Context mContext) {
         this.mContext = mContext;
     }
 
@@ -47,7 +43,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_heritage,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_heritage_2,parent,false);
         return new ItemViewHolder(view);
     }
 
@@ -60,7 +56,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.itemName.setText(item.getItem_name());
         holder.itemImg.setImageResource(item.getResourceImage());
         holder.itemName.setText(item.getItem_name());
-        holder.itemPlace.setText(item.getItem_place());
 
         holder.layout_item.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,13 +91,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         private CardView layout_item;
         private ImageView itemImg;
         private TextView itemName;
-        private TextView itemPlace;
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
             layout_item = itemView.findViewById(R.id.layout_item);
             itemImg = itemView.findViewById(R.id.item_image);
             itemName = itemView.findViewById(R.id.item_name);
-            itemPlace = itemView.findViewById(R.id.item_place);
 
         }
     }

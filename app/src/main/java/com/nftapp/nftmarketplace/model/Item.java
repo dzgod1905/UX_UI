@@ -6,12 +6,14 @@ public class Item implements Serializable {
     public int id;
     public int resourceImage;
     public String item_name;
+    public String item_place;
 
 
-    public Item(int id, int resourceImage, String item_name) {
+    public Item(int id, int resourceImage, String item_name, String item_place) {
         this.id = id;
         this.resourceImage = resourceImage;
         this.item_name = item_name;
+        this.item_place = item_place;
     }
 
     public int getId() {
@@ -38,4 +40,11 @@ public class Item implements Serializable {
         this.item_name = item_name;
     }
 
+    public String getItem_place() {
+        return item_place;
+    }
+
+    public void setItem_place(String item_place) {
+        this.item_place = item_place;
+    }
 }
