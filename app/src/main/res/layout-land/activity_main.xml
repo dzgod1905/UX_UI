@@ -15,7 +15,7 @@
         android:layout_height="44dp"
         android:layout_marginRight="150dp"
         android:layout_marginLeft="300dp"
-
+        android:layout_gravity="top"
         android:text="Time"
         android:textColor="#FFF"
         android:textSize="22sp" />
