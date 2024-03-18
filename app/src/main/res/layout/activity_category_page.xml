@@ -9,7 +9,7 @@
     tools:context=".CategoryPage">
 
     <ImageView
-        android:id="@+id/no_result"
+        android:id="@+id/no_result_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -21,7 +21,7 @@
         android:visibility="gone"></ImageView>
 
     <TextView
-        android:id="@+id/no_result_text"
+        android:id="@+id/no_result_text_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Không có kết quả"
@@ -29,7 +29,7 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/no_result"
+        app:layout_constraintTop_toBottomOf="@+id/no_result_2"
         tools:ignore="UnknownId"
         android:visibility="gone"></TextView>
 
@@ -87,6 +87,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
+            app:defaultQueryHint="Di tích, địa danh, ẩm thực..."
+            app:queryBackground="@color/green"
             app:searchIcon="@drawable/baseline_search_24"></androidx.appcompat.widget.SearchView>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

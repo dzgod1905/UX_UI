@@ -48,8 +48,8 @@ public class CategoryPage extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        no_result = findViewById(R.id.no_result);
-        no_result_text = findViewById(R.id.no_result_text);
+        no_result = findViewById(R.id.no_result_2);
+        no_result_text = findViewById(R.id.no_result_text_2);
         rcvItem = findViewById(R.id.rcv_items);
         mItemAdapter = new ItemAdapter_2(this);
         int orientation = getResources().getConfiguration().orientation;
@@ -75,6 +75,13 @@ public class CategoryPage extends AppCompatActivity {
         mItemAdapter.setData(getListItem());
         rcvItem.setAdapter(mItemAdapter);
         searchView = findViewById(R.id.search_2);
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(CategoryPage.this, "hi",Toast.LENGTH_SHORT).show();
+//                category_name.setVisibility(View.GONE);
+            }
+        });
         searchView.clearFocus();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -112,13 +119,30 @@ public class CategoryPage extends AppCompatActivity {
     }
     private List<Item> getListItem(){
         List<Item> list = new ArrayList<>();
-        list.add(new Item(1,R.drawable.thanhnhaho,"thanhnhaho","Thanh Hóa"));
-        list.add(new Item(2,R.drawable.avt2, "Cố đô HUế","Thừa Thiên Huế"));
         list.add(new Item(1,R.drawable.thanhnhaho,"Thành nhà Hồ","Thanh Hóa"));
-        list.add(new Item(2,R.drawable.avt2, "codohue","Thừa Thiên Huế"));
-        list.add(new Item(1,R.drawable.thanhnhaho,"Thanhnhaho","Thanh Hóa"));
-        list.add(new Item(2,R.drawable.avt2, "Codohue","Thừa Thiên Huế"));
-        list.add(new Item(1,R.drawable.thanhnhaho,"Thành nhà Hồ","Thanh Hóa"));
+        list.add(new Item(2,R.drawable.avt2, "Cố đô Huế","Thừa Thiên Huế"));
+        list.add(new Item(1,R.drawable.thanhnhaho,"Lăng chủ tịch","Hà Nội"));
+        list.add(new Item(2,R.drawable.avt2, "Thành cổ Quảng Trị","Quảng Trị"));
+        list.add(new Item(1,R.drawable.thanhnhaho,"Dinh độc lập","Tp.Hồ Chí Minh"));
+        list.add(new Item(2,R.drawable.avt2, "Nhà tù Hỏa Lò","Hà Nội"));
+        list.add(new Item(1,R.drawable.thanhnhaho,"Đền Hùng","Phú Thọ"));
+        list.add(new Item(2,R.drawable.avt2, "Thành Cổ Loa","Đông Anh"));
+        list.add(new Item(1,R.drawable.thanhnhaho,"Hồ Gươm","Hà Nội"));
+        list.add(new Item(2,R.drawable.avt2, "Cố đô Hoa Lư","Ninh Bình"));
+        list.add(new Item(1,R.drawable.thanhnhaho,"Chiến khu Tân Trào","Tuyên Quang"));
+        list.add(new Item(2,R.drawable.avt2, "Khu di tích Pác Bó","Cao Bằng"));
+        list.add(new Item(1,R.drawable.thanhnhaho,"Đền Ngọc Sơn","Hà Nội"));
+        list.add(new Item(2,R.drawable.avt2, "Thiền viện Trúc lâm Yên Tử","Quảng Ninh"));
+        list.add(new Item(1,R.drawable.thanhnhaho,"Đền Trần","Nam Định"));
+        list.add(new Item(2,R.drawable.avt2, "Văn miếu - Quốc Tử Giám","Hà Nội"));
+        list.add(new Item(1,R.drawable.thanhnhaho,"Vịnh Hạ Long","Quảng Ninh"));
+        list.add(new Item(2,R.drawable.avt2, "Phong Nha Kẻ Bàng","Quảng Bình"));
+        list.add(new Item(1,R.drawable.thanhnhaho,"Phố cổ Hội An","Quảng Nam"));
+        list.add(new Item(2,R.drawable.avt2, "Thánh địa Mỹ Sơn","Quảng Nam"));
+        list.add(new Item(1,R.drawable.thanhnhaho,"Phở xưa","Hà Nội"));
+        list.add(new Item(2,R.drawable.avt2, "Nem chua","Thanh Hóa"));
+        list.add(new Item(1,R.drawable.thanhnhaho,"Bánh cáy","Thái Bình"));
+        list.add(new Item(2,R.drawable.avt2, "Bánh đậu xanh","Hải dương"));
         return list;
     }
 
