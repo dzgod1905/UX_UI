@@ -55,7 +55,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         if (category == null){
             return;
         }
-        holder.nameCategory.setText(category.getNameCategory());
+        holder.nameCategory.setText(category.getCategory_name());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext,RecyclerView.HORIZONTAL,false);
         holder.rcvItem.setLayoutManager(linearLayoutManager);
         ItemAdapter itemAdapter = new ItemAdapter(mContext);

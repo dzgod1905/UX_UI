@@ -5,10 +5,12 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -19,13 +21,21 @@ import android.widget.Toast;
 import com.nftapp.nftmarketplace.adapter.CategoryAdapter;
 import com.nftapp.nftmarketplace.adapter.ItemAdapter;
 import com.nftapp.nftmarketplace.adapter.ItemAdapter_2;
+import com.nftapp.nftmarketplace.api.ApiService;
 import com.nftapp.nftmarketplace.model.Category;
 import com.nftapp.nftmarketplace.model.Item;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryPage extends AppCompatActivity {
+public class CategoryPage extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
     private TextView category_name;
     private ImageView back_button;
     private ImageView no_result;
@@ -33,7 +43,8 @@ public class CategoryPage extends AppCompatActivity {
     private RecyclerView rcvItem;
     private ItemAdapter_2 mItemAdapter;
     private SearchView searchView;
-    private List<Item> item = getListItem();
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private List<Item> item;
 
 
 
@@ -42,6 +53,9 @@ public class CategoryPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_page);
         back_button = findViewById(R.id.back_button);
+        swipeRefreshLayout = findViewById(R.id.swipe_layout_2);
+        swipeRefreshLayout.setOnRefreshListener(this);
+
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,18 +84,10 @@ public class CategoryPage extends AppCompatActivity {
         Category category = (Category) bundle.get("object_category");
         category_name = findViewById(R.id.category_name);
         Intent intent = getIntent();
-        category_name.setText(category.getNameCategory());
-//        mItemAdapter.setData(category.getItems());
-        mItemAdapter.setData(getListItem());
+        category_name.setText(category.getCategory_name());
+        getListItem(category.getCategory_name());
         rcvItem.setAdapter(mItemAdapter);
         searchView = findViewById(R.id.search_2);
-        searchView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(CategoryPage.this, "hi",Toast.LENGTH_SHORT).show();
-//                category_name.setVisibility(View.GONE);
-            }
-        });
         searchView.clearFocus();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -97,55 +103,76 @@ public class CategoryPage extends AppCompatActivity {
         });
 
     }
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null) {
+            return;
+        }
+        Category category = (Category) bundle.get("object_category");
+        getListItem(category.getCategory_name());
+
+    }
+
     private void filterList(String newText) {
-        List<Item> filterList = new ArrayList<>();
-        item = getListItem();
-        for (Item item : item) {
-            if(item.getItem_name().toLowerCase().contains(newText.toLowerCase()) || item.getItem_place().toLowerCase().contains(newText.toLowerCase()) ) {
-                filterList.add(item);
+        ApiService.apiService.sendPOST_item("","",newText.toLowerCase()).enqueue(new Callback<List<Item>>() {
+
+            @Override
+            public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
+                List<Item> filterList = response.body();
+                if (filterList.isEmpty()) {
+                    rcvItem.setVisibility(View.GONE);
+                    no_result.setVisibility(View.VISIBLE);
+                    no_result_text.setVisibility(View.VISIBLE);
+
+                } else {
+                    rcvItem.setVisibility(View.VISIBLE);
+                    no_result.setVisibility(View.GONE);
+                    no_result_text.setVisibility(View.GONE);
+                    mItemAdapter.setFilterList(filterList);
+                }
             }
-        }
-        if(filterList.isEmpty()) {
-            rcvItem.setVisibility(View.GONE);
-            no_result.setVisibility(View.VISIBLE);
-            no_result_text.setVisibility(View.VISIBLE);
-
-        } else {
-            rcvItem.setVisibility(View.VISIBLE);
-            no_result.setVisibility(View.GONE);
-            no_result_text.setVisibility(View.GONE);
-            mItemAdapter.setFilterList(filterList);
-        }
-    }
-    private List<Item> getListItem(){
-        List<Item> list = new ArrayList<>();
-        list.add(new Item(1,R.drawable.thanhnhaho,"Thành nhà Hồ","Thanh Hóa"));
-        list.add(new Item(2,R.drawable.avt2, "Cố đô Huế","Thừa Thiên Huế"));
-        list.add(new Item(1,R.drawable.thanhnhaho,"Lăng chủ tịch","Hà Nội"));
-        list.add(new Item(2,R.drawable.avt2, "Thành cổ Quảng Trị","Quảng Trị"));
-        list.add(new Item(1,R.drawable.thanhnhaho,"Dinh độc lập","Tp.Hồ Chí Minh"));
-        list.add(new Item(2,R.drawable.avt2, "Nhà tù Hỏa Lò","Hà Nội"));
-        list.add(new Item(1,R.drawable.thanhnhaho,"Đền Hùng","Phú Thọ"));
-        list.add(new Item(2,R.drawable.avt2, "Thành Cổ Loa","Đông Anh"));
-        list.add(new Item(1,R.drawable.thanhnhaho,"Hồ Gươm","Hà Nội"));
-        list.add(new Item(2,R.drawable.avt2, "Cố đô Hoa Lư","Ninh Bình"));
-        list.add(new Item(1,R.drawable.thanhnhaho,"Chiến khu Tân Trào","Tuyên Quang"));
-        list.add(new Item(2,R.drawable.avt2, "Khu di tích Pác Bó","Cao Bằng"));
-        list.add(new Item(1,R.drawable.thanhnhaho,"Đền Ngọc Sơn","Hà Nội"));
-        list.add(new Item(2,R.drawable.avt2, "Thiền viện Trúc lâm Yên Tử","Quảng Ninh"));
-        list.add(new Item(1,R.drawable.thanhnhaho,"Đền Trần","Nam Định"));
-        list.add(new Item(2,R.drawable.avt2, "Văn miếu - Quốc Tử Giám","Hà Nội"));
-        list.add(new Item(1,R.drawable.thanhnhaho,"Vịnh Hạ Long","Quảng Ninh"));
-        list.add(new Item(2,R.drawable.avt2, "Phong Nha Kẻ Bàng","Quảng Bình"));
-        list.add(new Item(1,R.drawable.thanhnhaho,"Phố cổ Hội An","Quảng Nam"));
-        list.add(new Item(2,R.drawable.avt2, "Thánh địa Mỹ Sơn","Quảng Nam"));
-        list.add(new Item(1,R.drawable.thanhnhaho,"Phở xưa","Hà Nội"));
-        list.add(new Item(2,R.drawable.avt2, "Nem chua","Thanh Hóa"));
-        list.add(new Item(1,R.drawable.thanhnhaho,"Bánh cáy","Thái Bình"));
-        list.add(new Item(2,R.drawable.avt2, "Bánh đậu xanh","Hải dương"));
-        return list;
+            @Override
+            public void onFailure(Call<List<Item>> call, Throwable t) {
+                Toast.makeText(CategoryPage.this,"failed",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
+
+    private void getListItem(String category){
+
+        ApiService.apiService.sendPOST_item(category,"","").enqueue(new Callback<List<Item>>() {
+
+            @Override
+            public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
+                List<Item> list = response.body();
+                mItemAdapter.setData(list);
+            }
+            @Override
+            public void onFailure(Call<List<Item>> call, Throwable t) {
+                Toast.makeText(CategoryPage.this,"failed",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void onRefresh() {
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null) {
+            return;
+        }
+        Category category = (Category) bundle.get("object_category");
+        getListItem(category.getCategory_name());
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        },3000);
+    }
 }
 
 
