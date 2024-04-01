@@ -11,6 +11,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -58,6 +59,8 @@ public class Travel extends AppCompatActivity implements SwipeRefreshLayout.OnRe
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final MediaPlayer mediaPlayer = MediaPlayer.create(Travel.this,R.raw.click_effect);
+                mediaPlayer.start();
                 onBackPressed();
             }
         });
@@ -178,6 +181,8 @@ public class Travel extends AppCompatActivity implements SwipeRefreshLayout.OnRe
 
     @Override
     public void onRefresh() {
+        final MediaPlayer mediaPlayer = MediaPlayer.create(Travel.this,R.raw.reload_effect);
+        mediaPlayer.start();
         getListCategory();
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -185,6 +190,6 @@ public class Travel extends AppCompatActivity implements SwipeRefreshLayout.OnRe
             public void run() {
                 swipeRefreshLayout.setRefreshing(false);
             }
-        },3000);
+        },2000);
     }
 }

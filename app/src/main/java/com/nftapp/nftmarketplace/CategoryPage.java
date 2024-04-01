@@ -9,6 +9,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -59,6 +60,8 @@ public class CategoryPage extends AppCompatActivity implements SwipeRefreshLayou
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final MediaPlayer mediaPlayer = MediaPlayer.create(CategoryPage.this,R.raw.click_effect);
+                mediaPlayer.start();
                 onBackPressed();
             }
         });
@@ -90,6 +93,7 @@ public class CategoryPage extends AppCompatActivity implements SwipeRefreshLayou
         searchView = findViewById(R.id.search_2);
         searchView.clearFocus();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -157,8 +161,13 @@ public class CategoryPage extends AppCompatActivity implements SwipeRefreshLayou
         });
     }
 
+
+//    Hàm dưới đây dùng để tạo hiệu ứng refresh và âm thanh khi nhấn vào button
+
     @Override
     public void onRefresh() {
+        final MediaPlayer mediaPlayer = MediaPlayer.create(CategoryPage.this,R.raw.reload_effect);
+        mediaPlayer.start();
         Bundle bundle = getIntent().getExtras();
         if(bundle == null) {
             return;
@@ -171,7 +180,7 @@ public class CategoryPage extends AppCompatActivity implements SwipeRefreshLayou
             public void run() {
                 swipeRefreshLayout.setRefreshing(false);
             }
-        },3000);
+        },2000);
     }
 }
 

@@ -40,7 +40,7 @@ public class ItemInfo extends AppCompatActivity {
     private TextView item_place;
     private ImageButton speaker;
     private ImageButton favourite;
-    private MediaPlayer mediaPlayer = new MediaPlayer();
+    private MediaPlayer mediaPlayer1 = new MediaPlayer();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +52,8 @@ public class ItemInfo extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final MediaPlayer mediaPlayer = MediaPlayer.create(ItemInfo.this,R.raw.click_effect);
+                mediaPlayer.start();
                 onBackPressed();
             }
         });
@@ -79,17 +81,19 @@ public class ItemInfo extends AppCompatActivity {
                 bundle1.putString("URL_image",item.getItem_image());
                 Intent intent = new Intent(ItemInfo.this, ImgView.class);
                 intent.putExtra("image",bundle1);
+                final MediaPlayer mediaPlayer = MediaPlayer.create(ItemInfo.this,R.raw.button_effect);
+                mediaPlayer.start();
                 startActivity(intent);
             }
         });
         speaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if(mediaPlayer.isPlaying()) {
-                   mediaPlayer.pause();
+               if(mediaPlayer1.isPlaying()) {
+                   mediaPlayer1.pause();
                } else {
                    prepareMediaPlayer();
-                   mediaPlayer.start();
+                   mediaPlayer1.start();
 
                }
             }
@@ -99,6 +103,8 @@ public class ItemInfo extends AppCompatActivity {
         favourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final MediaPlayer mediaPlayer = MediaPlayer.create(ItemInfo.this,R.raw.button_effect);
+                mediaPlayer.start();
                 if (item.getIsFavourite() == 0) {
                     ApiService.apiService.sendPOST_item("",Integer.toString(item.getId()),"1").enqueue(new Callback<List<Item>>() {
                         @Override
@@ -141,8 +147,8 @@ public class ItemInfo extends AppCompatActivity {
         }
         Item item = (Item) bundle.get("object_item");
         try {
-            mediaPlayer.setDataSource(item.getItem_voice());
-            mediaPlayer.prepare();
+            mediaPlayer1.setDataSource(item.getItem_voice());
+            mediaPlayer1.prepare();
 
         } catch (Exception exception) {
         }
