@@ -19,6 +19,17 @@ public class BossAct extends AppCompatActivity {
 
     public int level = 1 ;
 
+    @Override
+    public void onBackPressed()
+    {
+        // code here to show dialog
+        Intent intent = new Intent(BossAct.this, MainPage.class);
+        startActivity(intent);
+        finish();
+
+        // optional depending on your needs
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +54,7 @@ public class BossAct extends AppCompatActivity {
                     Intent intent = new Intent(BossAct.this, MainActivity_Quiz.class);
                     intent.putExtra("i", level);
                     startActivity(intent);
+                    finish();
 
             }
         });

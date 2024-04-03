@@ -3,6 +3,7 @@ package com.nftapp.nftmarketplace.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nftapp.nftmarketplace.ImgView;
-import com.nftapp.nftmarketplace.MainActivity;
 import com.nftapp.nftmarketplace.Travel;
 import com.nftapp.nftmarketplace.ItemInfo;
 import com.nftapp.nftmarketplace.MainActivity_Quiz;
@@ -54,6 +54,8 @@ public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.FeatureV
         holder.layout_feature.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final MediaPlayer mediaPlayer = MediaPlayer.create(mContext,R.raw.button_effect);
+                mediaPlayer.start();
                 onClickGoToActivity(position);
             }
         });
@@ -70,7 +72,7 @@ public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.FeatureV
                intent = new Intent(mContext, ItemInfo.class);
                break;
            case 2:
-               intent = new Intent(mContext, MainActivity.class);
+               intent = new Intent(mContext, ImgView.class);
                break;
            case 3:
                intent = new Intent(mContext, MainActivity_Quiz.class);

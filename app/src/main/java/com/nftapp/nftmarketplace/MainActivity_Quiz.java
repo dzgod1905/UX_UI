@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -43,16 +44,40 @@ public class MainActivity_Quiz extends AppCompatActivity {
     public String[] ans_key2 ;
     public String ansText;
 
+    @Override
+    public void onBackPressed()
+    {
+        // code here to show dialog
+        Intent intent = new Intent(MainActivity_Quiz.this, MainPage.class);
+        startActivity(intent);
+        finish();
+
+        // optional depending on your needs
+    }
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         value = intent.getIntExtra("i",0);
 
         smallbigforth = AnimationUtils.loadAnimation(this, R.anim.smallbigforth);
+        Button btn = (Button)findViewById(R.id.close);
+
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity_Quiz.this, MainPage.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         if (value == 1 || value == 2 || value == 0) {
             keys = generalKey[value];
@@ -135,6 +160,9 @@ public class MainActivity_Quiz extends AppCompatActivity {
         textTitle = (TextView) findViewById(R.id.textTitle);
 
         if (value == 0 || value == 1 || value ==2) {
+            LinearLayout layoutParent1 = (LinearLayout) findViewById(R.id.layoutParent1);
+            layoutParent1.setOrientation(LinearLayout.HORIZONTAL);
+
             textView.setOnClickListener(new View.OnClickListener() {
 
                 @SuppressLint("SetTextI18n")
@@ -160,6 +188,9 @@ public class MainActivity_Quiz extends AppCompatActivity {
 
 
         } else if (value == 3 || value == 4 || value == 5) {
+
+            LinearLayout layoutParent1 = (LinearLayout) findViewById(R.id.layoutParent1);
+            layoutParent1.setOrientation(LinearLayout.VERTICAL);
             textView.setOnClickListener(new View.OnClickListener() {
 
                 @SuppressLint("SetTextI18n")
@@ -194,21 +225,22 @@ public class MainActivity_Quiz extends AppCompatActivity {
         EditText editText = findViewById(R.id.editText);
 
         if(editText.getText().toString().equals(textAnswer)) {
-            Toast.makeText(MainActivity_Quiz.this, "Correct", Toast.LENGTH_SHORT).show();
             Intent a = new Intent(MainActivity_Quiz.this, BossAct.class);
             a.putExtra("l", value+1);
             if (value == 5) {
                 Intent end = new Intent(MainActivity_Quiz.this, DoneAllQuiz.class);
                 startActivity(end);
+                finish();
+
             } else {
                 startActivity(a);
+                finish();
 
             }
 
 
             editText.setText("");
         } else {
-            Toast.makeText(MainActivity_Quiz.this, "Wrong", Toast.LENGTH_SHORT).show();
             editText.setText("");
         }
 
