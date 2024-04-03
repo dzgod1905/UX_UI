@@ -20,7 +20,7 @@
             android:layout_marginLeft="450dp"
             android:text="Time"
             android:textColor="#FFF"
-            android:textSize="22sp" />
+            android:textSize="28sp" />
 
         <Button
             android:id="@+id/close"
