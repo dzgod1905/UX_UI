@@ -2,13 +2,10 @@ package com.nftapp.nftmarketplace;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -29,7 +26,7 @@ public class ImgView extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                final MediaPlayer mediaPlayer = MediaPlayer.create(ImgView.this,R.raw.click_effect);
+                final MediaPlayer mediaPlayer = MediaPlayer.create(ImgView.this,R.raw.close_effect);
                 mediaPlayer.start();
                 onBackPressed();
             }
