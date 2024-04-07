@@ -3,29 +3,19 @@ package com.nftapp.nftmarketplace;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Handler;
-import android.speech.tts.TextToSpeech;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.material.textfield.TextInputEditText;
 import com.nftapp.nftmarketplace.api.ApiService;
 import com.nftapp.nftmarketplace.model.Item;
 
 import java.util.List;
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -80,7 +70,7 @@ public class ItemInfo extends AppCompatActivity {
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("URL_image",item.getItem_image());
                 Intent intent = new Intent(ItemInfo.this, ImgView.class);
-                intent.putExtra("image",bundle1);
+                intent.putExtra("img",bundle1);
                 final MediaPlayer mediaPlayer = MediaPlayer.create(ItemInfo.this,R.raw.button_effect);
                 mediaPlayer.start();
                 startActivity(intent);
