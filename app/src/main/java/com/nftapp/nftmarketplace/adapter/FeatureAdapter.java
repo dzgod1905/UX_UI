@@ -15,8 +15,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nftapp.nftmarketplace.ImgView;
+import com.nftapp.nftmarketplace.MainActivity_Puzzle;
 import com.nftapp.nftmarketplace.Travel;
-import com.nftapp.nftmarketplace.ItemInfo;
 import com.nftapp.nftmarketplace.MainActivity_Quiz;
 import com.nftapp.nftmarketplace.R;
 import com.nftapp.nftmarketplace.model.Feature;
@@ -69,7 +69,7 @@ public class FeatureAdapter extends RecyclerView.Adapter<FeatureAdapter.FeatureV
                intent = new Intent(mContext, Travel.class);
                break;
            case 1:
-               intent = new Intent(mContext, ItemInfo.class);
+               intent = new Intent(mContext, MainActivity_Puzzle.class);
                break;
            case 2:
                intent = new Intent(mContext, ImgView.class);
