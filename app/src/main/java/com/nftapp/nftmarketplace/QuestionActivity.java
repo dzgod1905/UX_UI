@@ -17,15 +17,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.nftapp.nftmarketplace.model.Question;
+
 import java.util.Arrays;
 import java.util.Locale;
 
 public class QuestionActivity extends AppCompatActivity {
     private TextView countdown_timer;
+    private TextView question_text;
+    private String key;
     private ImageView close_button;
     private ConstraintLayout exit_quizz_layout;
     private CountDownTimer timer;
     private CardView option1_layout, option2_layout, option3_layout, option4_layout;
+    private TextView option1, option2, option3, option4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +38,29 @@ public class QuestionActivity extends AppCompatActivity {
         setContentView(R.layout.question_activity);
         Bundle bundle = getIntent().getExtras();
         String quizz_package = bundle.getString("quizz_package");
+        question_text = findViewById(R.id.question_text);
         option1_layout = findViewById(R.id.option1_layout);
         option2_layout = findViewById(R.id.option2_layout);
         option3_layout = findViewById(R.id.option3_layout);
         option4_layout = findViewById(R.id.option4_layout);
         countdown_timer = findViewById(R.id.countdown_timer);
         CardView[] option_layout = {option1_layout, option2_layout, option3_layout, option4_layout};
-        for (CardView option: option_layout
-             ) {
-            option.setOnClickListener(new View.OnClickListener() {
+        option1 = findViewById(R.id.option_1);
+        option2 = findViewById(R.id.option_2);
+        option3 = findViewById(R.id.option_3);
+        option4 = findViewById(R.id.option_4);
+        TextView[] option_answer = {option1, option2, option3, option4};
+        getQuestion();
+        for (int i = 0;i<4;i++) {
+            int finalI = i;
+            option_layout[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(QuestionActivity.this,quizz_package +" "+ String.valueOf(option.getId()),Toast.LENGTH_SHORT).show();
+                    if(option_answer[finalI].getText().equals(key)) {
+                        Toast.makeText(QuestionActivity.this, "correct", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(QuestionActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
             
@@ -105,5 +121,15 @@ public class QuestionActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    public void getQuestion() {
+        Question question = new Question("","Cầu Vàng được xây dựng ở mô","Thanh Hóa","Đà Nẵng","Hà Nội","Ninh Bình","Đà Nẵng");
+        question_text.setText(question.getQuestion_text());
+        option1.setText(question.getQuestion_option1());
+        option2.setText(question.getQuestion_option2());
+        option3.setText(question.getQuestion_option3());
+        option4.setText(question.getQuestion_option4());
+        key = question.getQuestion_key();
+
     }
 }

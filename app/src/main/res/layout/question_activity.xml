@@ -80,7 +80,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.cardview.widget.CardView>
     <TextView
-        android:id="@+id/question"
+        android:id="@+id/question_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cầu Vàng được xây dựng ở đâu ?"
@@ -93,7 +93,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/question"
+        android:layout_below="@+id/question_text"
         android:orientation="vertical"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
