@@ -6,16 +6,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.nftapp.nftmarketplace.adapter.QuizzPackageAdapter;
+import com.nftapp.nftmarketplace.api.ApiService;
+import com.nftapp.nftmarketplace.model.Item;
+import com.nftapp.nftmarketplace.model.Level;
 import com.nftapp.nftmarketplace.model.QuizzPackage;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class QuizzPackageSelector extends AppCompatActivity {
 
@@ -58,56 +66,26 @@ public class QuizzPackageSelector extends AppCompatActivity {
         if(bundle == null) {
             return;
         }
-        getListItem();
+        String level =  bundle.getString("level");
+        getListItem(level);
+        mQuizzPackageAdapter.setLevel(level);
         rcvItem.setAdapter(mQuizzPackageAdapter);
 
     }
-//    @Override
-//    protected void onRestart() {
-//        super.onRestart();
-//        Bundle bundle = getIntent().getExtras();
-//        if(bundle == null) {
-//            return;
-//        }
-//        Category category = (Category) bundle.get("object_category");
-//        getListItem(category.getCategory_name());
-//
-//    }
 
-    private void getListItem(){
+    private void getListItem(String level){
 
-//        ApiService.apiService.sendPOST_item(category,"","").enqueue(new Callback<List<Item>>() {
-//
-//            @Override
-//            public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
-//                List<Item> list = response.body();
-//                mQuizzPackageAdapter.setData(list);
-//            }
-//            @Override
-//            public void onFailure(Call<List<Item>> call, Throwable t) {
-//            }
-//        });
-        List<QuizzPackage> quizzPackageList = new ArrayList<>();
-        quizzPackageList.add(new QuizzPackage(1,"1"));
-        quizzPackageList.add(new QuizzPackage(1,"2"));
-        quizzPackageList.add(new QuizzPackage(1,"3"));
-        quizzPackageList.add(new QuizzPackage(1,"4"));
-        quizzPackageList.add(new QuizzPackage(1,"5"));
-        quizzPackageList.add(new QuizzPackage(1,"6"));
-        quizzPackageList.add(new QuizzPackage(1,"7"));
-        quizzPackageList.add(new QuizzPackage(1,"8"));
-        quizzPackageList.add(new QuizzPackage(1,"9"));
-        quizzPackageList.add(new QuizzPackage(1,"10"));
-        quizzPackageList.add(new QuizzPackage(1,"11"));
-        quizzPackageList.add(new QuizzPackage(1,"12"));
-        quizzPackageList.add(new QuizzPackage(1,"13"));
-        quizzPackageList.add(new QuizzPackage(1,"14"));
-        quizzPackageList.add(new QuizzPackage(1,"15"));
-        quizzPackageList.add(new QuizzPackage(1,"16"));
-        quizzPackageList.add(new QuizzPackage(1,"17"));
-        quizzPackageList.add(new QuizzPackage(1,"18"));
-        quizzPackageList.add(new QuizzPackage(1,"19"));
-        mQuizzPackageAdapter.setData(quizzPackageList);
+        ApiService.apiService.sendPOST_package(level,"").enqueue(new Callback<List<QuizzPackage>>() {
+
+            @Override
+            public void onResponse(Call<List<QuizzPackage>> call, Response<List<QuizzPackage>> response) {
+                List<QuizzPackage> list = response.body();
+                mQuizzPackageAdapter.setData(list);
+            }
+            @Override
+            public void onFailure(Call<List<QuizzPackage>> call, Throwable t) {
+            }
+        });
     }
 
 

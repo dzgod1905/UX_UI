@@ -29,6 +29,15 @@ public class QuizzPackageAdapter extends RecyclerView.Adapter<QuizzPackageAdapte
 
     private Context mContext;
     private List<QuizzPackage> mListQuizzPackage;
+    private String level;
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
 
     public QuizzPackageAdapter(List<QuizzPackage> mListQuizzPackage) {
         this.mListQuizzPackage = mListQuizzPackage;
@@ -110,11 +119,10 @@ public class QuizzPackageAdapter extends RecyclerView.Adapter<QuizzPackageAdapte
     public void onClickGoToPlay(QuizzPackage quizzPackage){
         Bundle bundle = new Bundle();
         bundle.putString("quizz_package",quizzPackage.getPackage_number());
+        bundle.putString("quizz_level",level);
         Intent intent = new Intent(mContext, QuestionActivity.class);
         intent.putExtras(bundle);
         mContext.startActivity(intent);
-
-
     }
 
     public void release() {

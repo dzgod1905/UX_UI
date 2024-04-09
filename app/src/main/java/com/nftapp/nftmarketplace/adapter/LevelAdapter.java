@@ -53,15 +53,15 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.LevelViewHol
             public void onClick(View view) {
                 final MediaPlayer mediaPlayer = MediaPlayer.create(mContext,R.raw.click_effect);
                 mediaPlayer.start();
-                onClickGoToActivity(position);
+                onClickGoToActivity(level);
             }
         });
 
     }
 
-    private void onClickGoToActivity(int position){
+    private void onClickGoToActivity(Level level){
         Bundle bundle = new Bundle();
-        bundle.putInt("position",position);
+        bundle.putString("level",level.getLevel_name());
         Intent intent = new Intent(mContext, QuizzPackageSelector.class);
         intent.putExtras(bundle);
         mContext.startActivity(intent);
